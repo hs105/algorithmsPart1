@@ -13,8 +13,10 @@ public class QuickUnion{
 
 	public boolean connected(int p, int q){ return id[p]==id[q];}
 	public void union(int p, int q){
-		if(root(p)==root(q)) return;
-		id[root(p)]=root(q);
+		int rp=root(p);
+		int rq=root(q);
+		if(rp==rq) return;
+		id[rp]=q;
 	}
 	//find root of the tree that p belongs to
 	public int root(int p){

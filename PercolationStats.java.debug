@@ -1,0 +1,91 @@
+/*
+	Project description: http://coursera.cs.princeton.edu/algs4/assignments/percolation.html
+	Performing multiple runs of percolation experiments and giving Monte-Carlo estimate
+*/
+
+public class PercolationStats {
+
+	private final double data[];//holding results of multiple runs of experiments
+
+	//constructor of T independent experiment on N by N grid
+	public PercolationStats(int N, int T ) throws Exception{
+		if(N<=0 || T<=0) throw new IllegalArgumentException("N and T should be positive.");
+		
+		data=new double[T];
+
+		for(int t=0;t<T; t++){
+			Percolation world=new Percolation(N);
+			
+			while(!world.percolates()){
+				//chose a site (row i, int j) uniformly at random among all blocked sites
+				int i=StdRandom.uniform(N)+1;
+				int j=StdRandom.uniform(N)+1;
+				//open the site
+				world.open(i,j);
+				int num1=world.numberOfOpenSites();
+				//System.out.println("#open sites:"+num1);
+				//System.out.println("System is \n"+world);
+				//System.out.println("UF tree is ");
+				//world.getUF().showIDs();
+			}
+
+			//System.out.println("System percolates:\n"+world);
+			
+			//get the the fraction of the sites that are opened. 
+			int num1=world.numberOfOpenSites();
+			//int num2=world.numberOfOpenSites2();
+			//assert num1==num2;
+			//System.out.println(num1+" sites are open");
+			data[t] = num1/(double)(N*N);  
+		}
+	}
+
+
+	//sample mean of percolation threshold
+	public double mean(){
+		double m=0.0;
+		for(int t=0;t<data.length;t++) {
+			m += data[t];
+		}
+		return m/data.length;
+	}
+
+	//sample standard deviation of perculation threshold
+	public double stddev(){
+		double s=0.0;
+		double m=mean();
+		for(int t=0;t<data.length;t++){
+			s += (data[t]-m)*(data[t]-m);
+		}
+		return Math.sqrt(s/(data.length-1));
+	}
+
+	//returns low bound of the 95% confidence interval
+	public double confidenceLo(){
+		double sigma=stddev();
+		return mean() - 1.96*sigma/Math.sqrt(data.length);
+	}
+	
+	//returns upper bound of the 95% confidence interval
+	public double confidenceHi(){
+		double sigma=stddev();
+		return mean() + 1.96 * sigma/Math.sqrt(data.length);
+	}
+
+	//test client
+	public static void main(String[] args) throws Exception{
+		int N=Integer.valueOf(args[0]);
+		int T=Integer.valueOf(args[1]);
+		PercolationStats stats=new PercolationStats(N,T);
+		double statsMean=stats.mean();
+		double statsStd=stats.stddev();
+		double lo=stats.confidenceLo();
+		double hi=stats.confidenceHi();
+		System.out.println("mean ="+ statsMean);
+		System.out.println("stddev="+ statsStd);
+		System.out.println("95% confidence interval =" +lo +", "+ hi);
+	
+	}
+
+
+}

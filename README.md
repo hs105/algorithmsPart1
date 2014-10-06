@@ -1,4 +1,4 @@
 algorithmsPart1
 ===============
 
-coursera course by Princeton
+coursera course by Kevin Wayne and Robert Sedgewick@Princeton

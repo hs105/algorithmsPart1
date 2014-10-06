@@ -13,9 +13,14 @@ public abstract class Sort {
     }
 
     public static boolean isSorted(Comparable[] a) {
-        for (int i = 0; i < a.length-1; i++)
-            if (less(a[i+1], a[i])) return false; 
-        return true; 
+        return isSorted(a, 0, a.length);
+    }
+
+    public static boolean isSorted(Comparable[] a, int low, int high){
+        for(int i = low; i < high-1; i++){
+            if(less(a[i+1], a[i])) return false;
+        }
+        return true;
     }
 
     public static void show(Comparable[] a) {
@@ -24,5 +29,4 @@ public abstract class Sort {
         }
         System.out.println(); 
     }
-
 }

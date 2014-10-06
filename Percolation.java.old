@@ -1,0 +1,53 @@
+
+//a percolation class that conducts site control operation and provide interface for judging whether the site world percolates 
+public class Percolation {
+
+	//create an N by N grid
+	//WeightedQuickUnionUF uf=new WeightedQuickUnionUF(N*N + 2);//two auxiliary grids: one at top and one at bottom of the grid.
+	public Percolation(int N) throws Exception{
+		if(N<=0) throw 	new IllegalArgumentException("parameter must be positive.");
+		this.N=N;
+		A=new boolean[N][N];
+	}
+
+	private int openSites=0;
+	public int numberOfOpenSites(){
+		return openSites;
+	}
+
+	//open cell (i,j)
+	public void open(int i, int j) throws Exception{
+		if(i>N || i<=0 || j>N || j<=0)  throw new IllegalArgumentException("Parameter must be between [1,N]");
+		A[i-1][j-1]=Boolean.TRUE;
+		openSites++;
+	}
+
+	//test whehter cell (i,j) is open
+	public boolean isOpen(int i, int j) throws Exception{
+		if(i>N || i<=0 || j>N || j<=0) throw new IllegalArgumentException("Parameter must be between [1,N]");
+		return A[i-1][j-1];
+	}
+	
+	//test whehter cell (i,j) is filled
+	public boolean isFull(int i, int j) throws Exception{
+		return !isOpen(i,j);
+	}
+	
+	//test whether the grid perculates
+	public boolean percolates(){
+		for(int k=1; k<N; k++){
+			if()
+		}	
+		return Boolean.TRUE;	
+	}
+
+	private final boolean[][] A;
+	private final int N;
+
+
+	//test client
+	public static void main(String[] args){
+	
+	}
+
+}

@@ -1,6 +1,17 @@
+import java.util.Iterator;
 public class DequeTest {
     private Deque deque = new Deque<Integer>();
     
+
+    public void testExceptions() throws Exception {
+        deque.clear();
+        //deque.removeFirst();
+        //deque.removeLast();
+        Iterator<Integer> it = deque.iterator();
+        //it.remove();
+        it.next();
+    }
+
     public void test1() throws Exception {
         deque.clear();
         deque.addFirst(1);
@@ -23,7 +34,7 @@ public class DequeTest {
         assert "1 2 3".equals(deque+"");
     }
 
-    public void test3() throws Exception{
+    public void test3() throws Exception {
         deque.clear();
         deque.addFirst(1);
         deque.addLast(2);
@@ -50,6 +61,7 @@ public class DequeTest {
 
     public static void main(String[] args) throws Exception {
         DequeTest test = new DequeTest();
+//        test.testExceptions();
         test.test1();
         test.test2();
         test.test3();

@@ -21,10 +21,10 @@ public class Deque<Item> implements Iterable<Item> {
         
     }
 
-    public void clear(){
-        first=null;
-        last=null;
-        N=0;
+    public void clear() {
+        first = null;
+        last = null;
+        N = 0;
     }
 
     /* is the deque empty? */
@@ -100,7 +100,7 @@ public class Deque<Item> implements Iterable<Item> {
             Node secondLast = last.previous;
             assert secondLast != null;
             secondLast.next =  null;
-            last= secondLast;
+            last = secondLast;
         }
         N--;
     }

@@ -21,6 +21,12 @@ public class Deque<Item> implements Iterable<Item> {
         
     }
 
+    public void clear(){
+        first=null;
+        last=null;
+        N=0;
+    }
+
     /* is the deque empty? */
     public boolean isEmpty() {
         if (N ==  0) {
@@ -57,7 +63,15 @@ public class Deque<Item> implements Iterable<Item> {
     public void removeFirst() throws Exception {
         if (size() ==  0)
             throw new NoSuchElementException("no removing for empty deque");
-        
+        if (size() == 1) {
+            clear();
+        } else {
+            Node second = first.next;
+            assert second != null;
+            second.previous = null;
+            first = second;
+        }
+        N--;
     }
 
     /* add item at the last */
@@ -80,10 +94,15 @@ public class Deque<Item> implements Iterable<Item> {
     public void removeLast() throws Exception {
         if (size() ==  0)
             throw new NoSuchElementException("no removing for empty deque");
-    }
-
-    public void remove() throws Exception {
-        throw new UnsupportedOperationException("remove() is not supported");
+        if (size() == 1) {
+            removeFirst();
+        } else {
+            Node secondLast = last.previous;
+            assert secondLast != null;
+            secondLast.next =  null;
+            last= secondLast;
+        }
+        N--;
     }
 
     /* return an iterator in the order from front to end */

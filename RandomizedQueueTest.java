@@ -48,9 +48,19 @@ public class RandomizedQueueTest{
         */
     }
 
+    public void testException1() throws Exception{
+        getQueue().clear();
+        getQueue().dequeue();
+    }
+
+    public void testException2() throws Exception{
+        getQueue().clear();
+        getQueue().sample();
+    }
+
+
     public static void main(String[] args) throws Exception{
       RandomizedQueueTest rt=new RandomizedQueueTest();
-      /*
       rt.sampleTest1(); 
       rt.getQueue().clear();
       rt.enqueueTest();
@@ -64,10 +74,13 @@ public class RandomizedQueueTest{
       rt.sampleTest2();
 
       rt.getQueue().clear();
-      */
       rt.enqueueTest();
       assert rt.getQueue().size()==3;
       rt.iteratorTest();
+
+//      rt.testException1();
+      rt.testException2();
+
     }
 
 }

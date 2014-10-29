@@ -20,8 +20,9 @@ public class Deque<Item> implements Iterable<Item> {
     public Deque() {
         
     }
-
-    public void clear() {
+    
+    //public void clear() {
+    private void clear() {
         first = null;
         last = null;
         N = 0;
@@ -60,9 +61,10 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     /* remove the item at the front */
-    public void removeFirst() throws Exception {
+    public Item removeFirst() throws Exception {
         if (size() ==  0)
             throw new NoSuchElementException("no removing for empty deque");
+        Item item = first.item;
         if (size() == 1) {
             clear();
         } else {
@@ -72,6 +74,7 @@ public class Deque<Item> implements Iterable<Item> {
             first = second;
         }
         N--;
+        return item;
     }
 
     /* add item at the last */
@@ -91,9 +94,10 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     /* remove item at the end */
-    public void removeLast() throws Exception {
+    public Item removeLast() throws Exception {
         if (size() ==  0)
             throw new NoSuchElementException("no removing for empty deque");
+        Item item = last.item;
         if (size() == 1) {
             removeFirst();
         } else {
@@ -103,6 +107,7 @@ public class Deque<Item> implements Iterable<Item> {
             last = secondLast;
         }
         N--;
+        return item;
     }
 
     /* return an iterator in the order from front to end */
@@ -127,6 +132,7 @@ public class Deque<Item> implements Iterable<Item> {
         }
     }
 
+/*
     @Override
     public String toString() {
                 Iterator<Item> it = iterator();
@@ -136,7 +142,7 @@ public class Deque<Item> implements Iterable<Item> {
                 }
                 return result.trim();
         }
-
+*/
 
     //unit testing
     public static void main(String[] args) {

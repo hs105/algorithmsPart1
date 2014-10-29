@@ -102,8 +102,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
     }
 
-   //public void clear() {
-   private void clear() {
+   public void clear() {
+   //private void clear() {
         a = null; 
         N = 0; 
    }

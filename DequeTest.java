@@ -1,4 +1,28 @@
 import java.util.Iterator;
+
+/*
+    future work: 
+    Tests  make random calls to addFirst(), addLast(), removeFirst(), and
+    removeLast(). The probabilities of each operation are p1, p2, p3, and p4,
+    respectively. check size()
+    Test 1: Calls to addFirst() and addLast() only
+    Test 2: Calls to addFirst() and removeFirst()
+    Test 3: Calls to addFirst() and removeLast()
+    Test 4: Calls to addLast() and removeLast()
+    Test 5: Calls to addLast() and removeFirst()
+    Test 6: Calls to addFirst(), addLast(), removeFirst(), and removeLast()
+    Test 9: Check iterator() after calls only to addFirst()
+    Test 10: Check iterator() after intermixed calls to addFirst(), addLast(),
+             removeFirst(), and removeLast()
+    Test 11: Create two independent iterators to same deque
+    Test 12: Create Deque objects of different parameterized types
+    Test 13: Check that addFirst() and addLast() each throw a NullPointerException
+             when inserting null items
+
+    Test 15: Check iterator() when Deque is empty
+    passed all these tests for coursera. should write these tests yourself here.
+*/
+
 public class DequeTest {
     private Deque deque = new Deque<Integer>();
     

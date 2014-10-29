@@ -72,8 +72,8 @@ public class Deque<Item> implements Iterable<Item> {
             assert second != null;
             second.previous = null;
             first = second;
+            N--;
         }
-        N--;
         return item;
     }
 
@@ -89,8 +89,8 @@ public class Deque<Item> implements Iterable<Item> {
                 last.next = node;
                 node.previous = last;
                 last = node;
+                N++;
         }
-        N++;
     }
 
     /* remove item at the end */
@@ -105,8 +105,8 @@ public class Deque<Item> implements Iterable<Item> {
             assert secondLast != null;
             secondLast.next =  null;
             last = secondLast;
+            N--;
         }
-        N--;
         return item;
     }
 
